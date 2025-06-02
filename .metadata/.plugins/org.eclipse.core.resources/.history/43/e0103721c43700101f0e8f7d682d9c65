@@ -1,0 +1,23 @@
+package com.amazon.backend.pojo;
+
+
+
+import com.amazon.backend.enums.AddressType;
+
+public class AddressAddData {
+	
+	
+	public int userId;
+	public String addressLine1;
+	public String addressLine2;
+	public String city;
+	public String state;
+	public String pinCode;
+	public String country;
+	public Double latitude;
+	public Double longitude;
+	public boolean isDefault;
+	public AddressType addressType;
+	
+	
+}

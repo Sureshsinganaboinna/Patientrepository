@@ -1,0 +1,16 @@
+package com.amazon.backend.entities;
+
+import jakarta.persistence.Entity;
+import lombok.Data;
+
+@Entity
+@Data
+public class UploadFile {
+	
+	
+	private Long id;
+	private String fileName;
+	private String filePath;
+	private String fileType;
+
+}

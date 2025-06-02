@@ -1,0 +1,10 @@
+package com.amazon.backend.pojo;
+
+@Data
+public class updateQuantity {
+	
+	private int cartId;
+	private int productId;
+	private int quantity;
+
+}

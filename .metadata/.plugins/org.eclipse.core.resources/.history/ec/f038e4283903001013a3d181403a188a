@@ -1,0 +1,26 @@
+package Singletondesignpattern;
+
+public class SingletonPatte {
+
+	public static void main(String[] args) {
+		SingletonPattern singleinstance = SingletonPattern.getInstance();
+		
+		System.out.println(singleinstance.hashCode());
+
+		
+		Runnable task = () -> {
+			
+			SingletonPattern singleinstance1 = SingletonPattern.getInstance();
+			System.out.println(singleinstance1.hashCode());
+			
+		};
+		
+		
+		Thread theThread = new Thread(task);
+		
+		Thread theThread2 = new Thread(task);
+	
+	
+	}
+
+}

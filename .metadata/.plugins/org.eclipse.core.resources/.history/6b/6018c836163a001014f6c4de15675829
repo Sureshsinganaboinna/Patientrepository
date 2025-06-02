@@ -1,0 +1,69 @@
+package com.amazon.backend.service;
+
+import java.io.File;
+import java.io.IOException;
+import java.lang.reflect.Array;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.UUID;
+
+import org.hibernate.metamodel.mapping.ordering.ast.PathConsumer;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.multipart.MultipartFile;
+
+import com.amazon.backend.repository.UploadFileRepository;
+
+import ch.qos.logback.core.util.StringUtil;
+import io.jsonwebtoken.lang.Arrays;
+import io.micrometer.common.util.StringUtils;
+
+@Service
+public class UploadFileService {
+	
+	
+	
+	@Value("{file.upload.greetings}")
+    private String uploadFilePath;
+	
+	private int uploadFileSize = 1024*1024*2;
+	
+	
+	@Autowired
+	private UploadFileRepository uploadFileRepository;
+	
+	public void uploadGreetingFile(MultipartFile inpFile) throws IOException
+	{
+		
+		Path uploadpath = Paths.get(uploadFilePath);
+		
+	    if(!Files.exists(uploadpath))
+	    {
+	    	Files.createDirectories(uploadpath);
+	    }
+	    
+	    String filenameextension = StringUtils.getFilenameExtension(inpFile);
+	    
+	    String[] allowedfilext = {"wav","mp3","WAV"};
+	    
+	    Boolean verifyfileext = Arrays.stream(allowedfilext).anymatch();
+	    
+	    
+	    
+	    
+		
+	    String fileName = UUID.randomUUID().toString()+inpFile.getOriginalFilename();
+		
+		
+		
+	}
+	
+	
+	
+	
+	
+
+}

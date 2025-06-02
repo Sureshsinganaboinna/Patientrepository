@@ -1,0 +1,24 @@
+package Singletondesignpattern;
+
+public class SingletonPattern {
+
+	// Declare a private static instance variable, which will hold only instance of
+	// the class
+	private static SingletonPattern instance;
+
+	// declare private constructer to restrict object creation from outside classes.
+	private SingletonPattern() {
+
+	}
+
+	// declare public static method which will return single instance of the class
+
+	public static synchronized SingletonPattern getInstance() {
+		if (instance == null) {
+			instance = new SingletonPattern();
+		}
+
+		return instance;
+	}
+
+}
