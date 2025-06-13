@@ -1,0 +1,47 @@
+package com.amazon.backend.service;
+
+import java.math.BigDecimal;
+import java.util.Iterator;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.amazon.backend.entities.OrderItems;
+import com.amazon.backend.repository.OrderItemRepository;
+import com.amazon.backend.repository.OrderRepository;
+
+@Service
+public class OrderItemService {
+
+	@Autowired
+	private OrderItemRepository orderItemRepository;
+	
+	@Autowired
+	private OrderRepository orderRepository;
+	
+	public OrderItems getOrderedItems(int orderId)
+	{
+		System.out.println(orderId);
+		 List<Object[]> orderItemsList = orderRepository.getOrderedItemsList(orderId);
+		 
+		 for(Object[] orderitemss : orderItemsList)
+		 {
+			 OrderItems orderItems = new OrderItems();
+			 orderItems.setOrderId( (Integer) orderitemss[0]);
+			 orderItems.setPrice( ((BigDecimal) orderitemss[1]).doubleValue());
+			 orderItems.setProductId( (Integer) orderitemss[2]);
+			 orderItems.setQuantity((Integer) orderitemss[3]);
+			
+		  OrderItems orderItems2 =	 orderItemRepository.save(orderItems);
+		  return orderItems2;
+		 }
+		return null;
+		  
+		
+	}
+	
+	
+	
+	
+}

@@ -62,7 +62,6 @@ public class ConsultationController {
 		consultation1.setMedications(consultation.getMedications());
 		consultation1.setObservations(consultation.getObservations());
 		consultation1.setPatientid(consultation.getPatientid());
-		
 		return consultationService.saveConsultation(consultation1);
 	}
 	@GetMapping("patient/{patientid}")

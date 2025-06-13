@@ -1,0 +1,47 @@
+package com.amazon.backend.controller;
+
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.amazon.backend.constant.CartConstants;
+import com.amazon.backend.constant.OrderItemConstants;
+import com.amazon.backend.entities.OrderItems;
+import com.amazon.backend.entities.Productss;
+import com.amazon.backend.response.ApiResponse;
+import com.amazon.backend.service.OrderItemService;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+
+
+
+@RestController
+@RequestMapping("/OrderItems")
+public class OrderItemController {
+
+	@Autowired
+	private OrderItemService orderItemService;
+	
+	@GetMapping("/{orderId}")
+	public ResponseEntity<ApiResponse<OrderItems>> getMethodName(@PathVariable int orderId) {
+		
+	      OrderItems orderItemss =	orderItemService.getOrderedItems(orderId);
+		 
+
+			ApiResponse<OrderItems> cartssApiResponse = new ApiResponse<OrderItems>(true,
+					OrderItemConstants.BELOW_ARE_ORDERED_ITEMS, orderItemss);
+
+			return ResponseEntity.status(HttpStatus.OK).body(cartssApiResponse);
+		
+
+	}
+	
+	
+	
+	
+}

@@ -1,0 +1,37 @@
+package com.amazon.backend.controller;
+
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.amazon.backend.pojo.OrderCreateApi;
+import com.amazon.backend.service.OrderService;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+
+
+@RestController
+@RequestMapping("/Orders")
+public class OrdersController {
+	
+	
+	@Autowired
+	private OrderService orderService;
+	
+	@PostMapping("/orderDetails")
+	public String postMethodName(@RequestBody OrderCreateApi orderCreateApi) {
+	
+		orderService.getProductDetails(orderCreateApi);
+		return "ok";
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+
+}

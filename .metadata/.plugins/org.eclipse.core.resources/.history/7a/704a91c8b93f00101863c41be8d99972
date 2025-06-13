@@ -1,0 +1,46 @@
+package com.amazon.backend.controller;
+
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.amazon.backend.constant.AddressConstants;
+import com.amazon.backend.entities.Address;
+import com.amazon.backend.entities.Order;
+import com.amazon.backend.pojo.OrderCreateApi;
+import com.amazon.backend.response.ApiResponse;
+import com.amazon.backend.service.OrderService;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+
+
+@RestController
+@RequestMapping("/Orders")
+public class OrdersController {
+	
+	
+	@Autowired
+	private OrderService orderService;
+	
+	@PostMapping("/orderDetails")
+	public ResponseEntity<ApiResponse<Order>> postMethodName(@RequestBody OrderCreateApi orderCreateApi) {
+	
+	Order orderDetails = orderService.getProductDetails(orderCreateApi);
+	
+
+	ApiResponse<Order> address2 = new ApiResponse<Order>(true, AddressConstants.ADDRESS_ADDED_SUCCESSFULLY,
+			orderDetails);
+
+	return ResponseEntity.status(HttpStatus.OK).body(address2);
+	
+		}
+	
+	
+	
+	
+	
+
+}

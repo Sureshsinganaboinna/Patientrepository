@@ -1,0 +1,20 @@
+package com.amazon.backend.repository;
+
+
+import java.util.List;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+import com.amazon.backend.entities.Order;
+import com.amazon.backend.entities.OrderItems;
+
+@Repository
+public interface OrderItemRepository extends JpaRepository<OrderItems, Integer> {
+	
+	
+
+	List<Order> findByOrderId(int orderId);
+	
+
+}

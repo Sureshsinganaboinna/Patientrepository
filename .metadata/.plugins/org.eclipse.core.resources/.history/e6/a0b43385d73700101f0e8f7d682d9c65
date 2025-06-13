@@ -1,9 +1,0 @@
-package com.amazon.backend.constant;
-
-public class AddressConstants {
-	
-	public static final String ADDRESS_ADDED_SUCCESSFULLY = "Address added successfully";
-	
-	
-
-}

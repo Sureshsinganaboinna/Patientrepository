@@ -1,0 +1,47 @@
+package com.amazon.backend.service;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.amazon.backend.entities.Order;
+import com.amazon.backend.entities.Productss;
+import com.amazon.backend.pojo.OrderCreateApi;
+import com.amazon.backend.repository.OrderRepository;
+
+@Service
+public class OrderService {
+	
+	@Autowired
+	private OrderRepository orderRepository;
+	
+	public Order getProductDetails(OrderCreateApi orderCreateApi)
+	{
+		
+		List<Productss>  productsssList = orderRepository.getProductDetails(orderCreateApi.getUserId(), orderCreateApi.getCartId());
+		
+		Double totalprice = 0.0;
+		for(Productss prod : productsssList)
+		{
+			totalprice = totalprice + prod.getPrice();
+			
+		}
+		
+		System.out.println(totalprice);
+		
+		Order order = new Order();
+		order.setUserId(orderCreateApi.getUserId());
+		order.setTotalAmount(totalprice);
+		order.setBillingAddressId(orderCreateApi.getAddressId());
+		order.setShippingAddressId(orderCreateApi.getAddressId());
+	    
+	  Order order2 =	orderRepository.save(order);
+		
+		return order2;
+	}
+	
+	
+	
+
+}

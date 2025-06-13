@@ -1,7 +1,0 @@
-package com.amazon.backend.repository;
-
-import org.springframework.data.jpa.repository.JpaRepository;
-
-public interface UploadFileRepository extends JpaRepository<T, ID> {
-
-}

@@ -1,0 +1,30 @@
+package com.amazon.backend.entities;
+
+import java.time.LocalDateTime;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+import lombok.Data;
+
+
+@Entity
+@Data
+@Table(name = "order_items")
+public class OrderItems {
+	
+	
+	private int OrderItemId;
+	
+	private int orderId;
+	
+	private int productId;
+	
+	private Double price;
+	
+	private int quantity;
+	
+	private LocalDateTime createdOn = LocalDateTime.now();
+	
+	private LocalDateTime updatedOn = LocalDateTime.now();
+
+}

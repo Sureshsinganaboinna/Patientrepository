@@ -1,7 +1,0 @@
-package com.amazon.backend.constant;
-
-public class UploadFileConstants {
-	
-	public static final String UPLOAD_FILE_EXCEPTION = "upload proper file ext type";
-
-}
